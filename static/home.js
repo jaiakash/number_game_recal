@@ -1,6 +1,7 @@
 var socket = io.connect("http://" + document.domain + ":" + location.port);
 
 var starting_number = 1;
+var clicked_button = 0;
 var display_index = [0, 1, 2];
 var display = [0, 0, 0];
 
@@ -27,16 +28,24 @@ const sortRandomly = (array) => {
 };
 
 // Function to display 3 randomised numbers
-function display_numbers() {
+function update_display() {
   display[0] = starting_number;
   display[1] = getRandomInt(1, 10);
   display[2] = getRandomInt(1, 10);
 
   sortRandomly(display);
 
-  $("h4.d1").html(display[0]);
-  $("h4.d2").html(display[1]);
-  $("h4.d3").html(display[2]);
+  // Clear the div and app end the number of apple
+  $("div.display").html("");
+  for (let i = 1; i <= starting_number; i++) {
+    $("div.display").append(
+      ' <div class="column"> <img src="static/apple.png" style="width: 100px" /> </div>'
+    );
+  }
+
+  $("input.d1").attr("src", "static/numbers/" + display[0] + ".png");
+  $("input.d2").attr("src", "static/numbers/" + display[1] + ".png");
+  $("input.d3").attr("src", "static/numbers/" + display[2] + ".png");
 
   $("h4.score").html("Score : " + (starting_number - 1));
 }
@@ -46,25 +55,47 @@ socket.on("connect", function () {
     data: "User Connected",
   });
 
-  display_numbers();
+  update_display();
+
+  $(".d1").click(function () {
+    clicked_button = 0;
+  });
+
+  $(".d2").click(function () {
+    clicked_button = 1;
+  });
+
+  $(".d3").click(function () {
+    clicked_button = 2;
+  });
 
   var form = $("form").on("submit", function (e) {
     e.preventDefault();
-    let input_number = $("input.input_number").val();
+    var submit = e.originalEvent.submitter;
+    console.log(submit);
+    console.log(display[clicked_button]);
     socket.emit("message event", {
-      input_number: input_number,
+      number: display[clicked_button],
     });
-    $("input.message").val("").focus();
   });
 });
 
 socket.on("message response", function (msg) {
   console.log(msg);
-  if (typeof msg.input_number !== "undefined") {
-    if (starting_number == msg.input_number) {
+
+  // Check if number clicked is same as number of apple
+  if (typeof msg.number !== "undefined") {
+    if (starting_number == msg.number) {
       starting_number++;
-      display_numbers();
-      alert("Correct!");
+
+      // Check if the number is less than 10 or not
+      if (starting_number < 11) alert("Correct!");
+      else {
+        alert("You Won!!!");
+        location.reload();
+      }
+
+      update_display();
     } else {
       alert("Wrong! Try again!");
     }
