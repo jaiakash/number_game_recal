@@ -1,9 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_socketio import SocketIO
-from decouple import config
+from dotenv import load_dotenv, find_dotenv
+import os
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = config('SECRET_KEY', default='NOT_SAFE')
+load_dotenv(find_dotenv())
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 socketio = SocketIO(app)
 
 
