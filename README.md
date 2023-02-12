@@ -22,3 +22,7 @@ It is similar to the website <https://www.tinytap.com/activities/g361/play/numbe
 three windows instead of one.
 
 Store the pictures and numbers in a database.
+
+## Screenshots
+
+![Screenshot from 2023-02-13 01-21-20](https://user-images.githubusercontent.com/33419526/218333850-d8ab0dc1-ee27-42b1-bb6e-a24b72718b0a.png)
