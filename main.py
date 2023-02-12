@@ -10,20 +10,27 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 socketio = SocketIO(app)
 
 
-@app.route('/')
-def sessions():
+@app.route('/one')
+def one():
     return render_template('home.html')
 
 
-def messageReceived(methods=['GET', 'POST']):
-    print('message was received!!!')
+@app.route('/two')
+def two():
+    return render_template('home.html')
+
+
+@app.route('/three')
+def three():
+    return render_template('home.html')
 
 
 @socketio.on('message event')
 def handle_message_event(json, methods=['GET', 'POST']):
-    print('received message event: ' + str(json))
-    socketio.emit('message response', json, callback=messageReceived)
+    print('Python: received message event from one: ' + str(json))
+    socketio.emit('message response', json)
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app)
+    # socketio.run(app, debug=True)
