@@ -65,6 +65,8 @@ socket.on("message response", function (msg) {
       starting_number++;
       display_numbers();
       alert("Correct!");
+    } else {
+      alert("Wrong! Try again!");
     }
   }
 });
