@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.js"></script>
+  <script type="text/javascript" src="static/home.js"></script>
+  <link rel="stylesheet" href="static/home.css" />
+
   <head>
-    <title>Flask_Chat_App</title>
+    <title>Number Game</title>
   </head>
+
   <body>
-    <h3 style="color: #ccc; font-size: 30px">No message yet..</h3>
+    <h3 id="header">Number Game</h3>
+
+    <h3>Hi</h3>
+    <h3>Hi</h3>
+    <h3>Hi</h3>
+
     <div class="message_holder"></div>
 
+    <h3>Enter the Number</h3>
     <form action="/" method="POST">
-      <input type="text" class="username" placeholder="User Name" />
-      <input type="text" class="message" placeholder="Messages" />
+      <input
+        type="number"
+        class="input_number"
+        placeholder="Enter the number"
+      />
       <input type="submit" />
     </form>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.js"></script>
-    <script type="text/javascript" src="static/home.js"></script>
   </body>
 </html>

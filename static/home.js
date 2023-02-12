@@ -6,25 +6,19 @@ socket.on("connect", function () {
   });
   var form = $("form").on("submit", function (e) {
     e.preventDefault();
-    let user_name = $("input.username").val();
-    let user_input = $("input.message").val();
+    let input_number = $("input.input_number").val();
     socket.emit("message event", {
-      user_name: user_name,
-      message: user_input,
+      input_number: input_number,
     });
     $("input.message").val("").focus();
   });
 });
+
 socket.on("message response", function (msg) {
   console.log(msg);
-  if (typeof msg.user_name !== "undefined") {
-    $("h3").remove();
+  if (typeof msg.input_number !== "undefined") {
     $("div.message_holder").append(
-      '<div><b style="color: #000">' +
-        msg.user_name +
-        "</b> " +
-        msg.message +
-        "</div>"
+      '<div><b style="color: #000">' + msg.input_number
     );
   }
 });

@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(230, 230, 180);
+  /* background-image: url("background.png"); */
+}
+
+#header {
+  color: #000000;
+  font-size: 40px;
+}
