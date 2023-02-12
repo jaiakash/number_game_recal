@@ -73,7 +73,6 @@ socket.on("connect", function () {
     e.preventDefault();
     var submit = e.originalEvent.submitter;
     console.log(submit);
-    console.log(display[clicked_button]);
     socket.emit("message event", {
       number: display[clicked_button],
     });
