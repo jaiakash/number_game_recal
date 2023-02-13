@@ -1,20 +1,44 @@
+@font-face {
+  font-family: "Rocher";
+  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+@font-palette-values --Mint {
+  font-family: Rocher;
+  base-palette: 7;
+}
+
+@font-palette-values --Purples {
+  font-family: Rocher;
+  base-palette: 6;
+}
+
+@font-palette-values --Mint {
+  font-family: Rocher;
+  base-palette: 7;
+}
+
 body {
   background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Rocher";
   margin: auto;
   width: 60%;
   height: 50%;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .header {
   color: #000000;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .score {
   color: #000000;
   font-size: 30px;
+  padding-top: 40px;
+  font-palette: --Mint;
 }
 
 .display {

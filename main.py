@@ -2,6 +2,10 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 from dotenv import load_dotenv, find_dotenv
 import os
+from playsound import playsound
+
+# for playing note.wav file
+playsound('static/background.mp3')
 
 
 app = Flask(__name__)
